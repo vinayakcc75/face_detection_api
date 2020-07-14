@@ -18,30 +18,8 @@ const db=knex({
 app.use(bodyParser.json());
 app.use(cors());
 
-const database={
-	users:[
-	{
-		id:'123',
-		name:'John',
-		email:'john@gmail.com',
-		password:'cookies',
-		entries:0,
-		joined:new Date()
-	},
-	{
-		id:'1234',
-		name:'Sally',
-		email:'sally@gmail.com',
-		password:'bananas',
-		entries:0,
-		joined:new Date()
-	}
-]
-};
-
-
 app.get('/',(req,res)=>{
-	res.json(database.users);
+	res.json('It is working');
 })
  
 app.post('/signin', (req,res)=>{
