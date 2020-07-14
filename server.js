@@ -5,7 +5,7 @@ const cors=require('cors');
 const bcrypt = require('bcrypt-nodejs');
 var knex = require('knex');
 
-const db=knex({
+const db=knex({   
 	client: 'pg',
 	connection: {
 	  host : '127.0.0.1',
@@ -117,7 +117,9 @@ app.put('/image',(req,res)=>{
   .catch(err=>res.status(400).json('unable to get entries'))
 })
 
-app.listen(3000);
+app.listen(process.env.PORT||3000,()=>{
+	console.log('Listening to Port',process.env.PORT)
+});
 
 /*
 /--> res =this is working
