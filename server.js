@@ -83,6 +83,18 @@ app.get('/profile/:id',(req,res)=>{
 	.catch(err=>res.status(400).json('Not able to get user'))
 })
 
+app.post('/imageurl',(req,res)=>{
+	const Clarifai=require('clarifai');
+	const a = new Clarifai.App({
+		apiKey: 'c0942e7b31594b7bbaac039f27e902d3'
+	   });
+		a.models
+		.predict(Clarifai.FACE_DETECT_MODEL,req.body.input)
+		.then(data=>res.json(data))
+		.catch(err=>res.status(400).json('Unable to work with api'))
+})
+
+
 app.put('/image',(req,res)=>{
 	const {id}=req.body;
 	db('users')
