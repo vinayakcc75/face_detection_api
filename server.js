@@ -92,8 +92,10 @@ app.put('/image',(req,res)=>{
   .then(entries=>res.json(entries))
   .catch(err=>res.status(400).json('unable to get entries'))
 })
+const NODE_PORT = 'process.env.PORT || 3000';
 
-app.listen(process.env.PORT||3000,()=>{
+
+app.listen(NODE_PORT,()=>{
 	console.log(`Listening to Port ${process.env.PORT}`)
 });
 
